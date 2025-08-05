@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Assistant App</title>
+
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --tab-height: 60px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #splash-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-color);
+      color: white;
+      height: 100vh;
+      font-size: 2em;
+    }
+
+    #app {
+      display: none;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .tab-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      height: calc(100vh - var(--tab-height));
+    }
+
+    .tab-bar {
+      display: flex;
+      height: var(--tab-height);
+      background: #f2f2f2;
+      border-top: 1px solid #ccc;
+    }
+
+    .tab-bar button {
+      flex: 1;
+      background: none;
+      border: none;
+      font-size: 1em;
+      color: var(--text-color);
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .tab-bar button:hover {
+      background-color: #e0e0e0;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <h1>Welcome to AI Assistant</h1>
+  </div>
+
+  <!-- Main App -->
+  <div id="app">
+    <!-- Tab Content -->
+    <div class="tab-content" id="tab-ai">
+      <iframe src="https://cloud.fastgpt.io/chat/share?shareId=eqXptgV1NYmFNqA0Ql9xAcoi"></iframe>
+    </div>
+
+    <div class="tab-content" id="tab-privacy" style="display: none;">
+      <h2>Privacy Policy</h2>
+      <p>This AI Assistant app respects your privacy. Here is how we handle your data:</p>
+      <ul>
+        <li>No personal information is collected or stored by the app.</li>
+        <li>Your messages are processed in real-time using a third-party AI (FastGPT).</li>
+        <li>No chats are saved or used for training unless explicitly stated by the provider.</li>
+        <li>This app does not use cookies or tracking tools.</li>
+        <li>Do not share sensitive or personal information with the AI assistant.</li>
+      </ul>
+      <p>By using this app, you agree to these privacy practices.</p>
+    </div>
+
+    <div class="tab-content" id="tab-team" style="display: none;">
+      <h2>Development Team</h2>
+      <p>This app was created by a passionate development team:</p>
+      <ul>
+        <li><strong>Jane Doe</strong> – Frontend Developer</li>
+        <li><strong>John Smith</strong> – Backend Engineer</li>
+        <li><strong>Emily Lin</strong> – UX/UI Designer</li>
+        <li><strong>Raj Patel</strong> – Project Manager</li>
+      </ul>
+      <p>We are a remote team dedicated to building smart, privacy-respecting AI tools for modern users.</p>
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="tab-bar">
+      <button onclick="showTab('tab-ai')">Assistant</button>
+      <button onclick="showTab('tab-privacy')">Privacy</button>
+      <button onclick="showTab('tab-team')">Team</button>
+    </div>
+  </div>
+
+  <script>
+    // Splash screen delay and transition
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('app').style.display = 'flex';
+      }, 2000); // 2 second splash
+    });
+
+    // Tab switching logic
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      document.getElementById(tabId).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
